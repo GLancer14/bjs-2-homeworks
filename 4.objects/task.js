@@ -23,11 +23,12 @@ Student.prototype.addMarks = function (...marks) {
 }
 
 Student.prototype.getAverage = function () {
-  if (this.marks === undefined || this.marks.length === 0) {
+  const marksArray = this.marks;
+  if (marksArray === undefined || marksArray.length === 0) {
     return 0;
   }
 
-  return this.marks.reduce((acc, item, index, arr) => (index !== arr.length - 1) ? (item + acc) : ((item + acc) / arr.length));
+  return marksArray.reduce((acc, item, index, arr) => (index !== arr.length - 1) ? (item + acc) : ((item + acc) / arr.length));
 }
 
 Student.prototype.exclude = function (reason) {

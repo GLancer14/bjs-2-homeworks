@@ -1,10 +1,10 @@
 class PrintEditionItem {
-  constructor(name, releaseDate, pagesCount, state = 100, type = null) {
+  constructor(name, releaseDate, pagesCount) {
     this.name = name;
     this.releaseDate = releaseDate;
     this.pagesCount = pagesCount;
-    this._state = state;
-    this.type = type;
+    this._state = 100;
+    this.type = null;
   }
 
   fix() {
@@ -27,45 +27,45 @@ class PrintEditionItem {
 }
 
 class Magazine extends PrintEditionItem {
-  constructor(name, releaseDate, pagesCount, state) {
-    super(name, releaseDate, pagesCount, state);
+  constructor(name, releaseDate, pagesCount) {
+    super(name, releaseDate, pagesCount);
     this.type = "magazine";
   }
 }
 
 class Book extends PrintEditionItem {
-  constructor(author, name, releaseDate, pagesCount, state) {
-    super(name, releaseDate, pagesCount, state);
+  constructor(author, name, releaseDate, pagesCount) {
+    super(name, releaseDate, pagesCount);
     this.author = author;
     this.type = "book";
   }
 }
 
 class NovelBook extends Book {
-  constructor(author, name, releaseDate, pagesCount, state) {
-    super(author, name, releaseDate, pagesCount, state);
+  constructor(author, name, releaseDate, pagesCount) {
+    super(author, name, releaseDate, pagesCount);
     this.type = "novel";
   }
 }
 
 class FantasticBook extends Book {
-  constructor(author, name, releaseDate, pagesCount, state) {
-    super(author, name, releaseDate, pagesCount, state);
+  constructor(author, name, releaseDate, pagesCount) {
+    super(author, name, releaseDate, pagesCount);
     this.type = "fantastic";
   }
 }
 
 class DetectiveBook extends Book {
-  constructor(author, name, releaseDate, pagesCount, state) {
-    super(author, name, releaseDate, pagesCount, state);
+  constructor(author, name, releaseDate, pagesCount) {
+    super(author, name, releaseDate, pagesCount);
     this.type = "detective";
   }
 }
 
 class Library {
-  constructor(name, books = []) {
+  constructor(name) {
     this.name = name;
-    this.books = books;
+    this.books = [];
   }
 
   addBook(book) {
@@ -85,9 +85,9 @@ class Library {
 }
 
 class Student {
-  constructor(name, marks = {}) {
+  constructor(name) {
     this.name = name;
-    this.marks = marks;
+    this.marks = {};
   }
 
   addMark(mark, subject) {
@@ -95,7 +95,7 @@ class Student {
       return;
     }
 
-    if (!this.marks[subject]) {
+    if (!this.marks.hasOwnProperty(subject)) {
       this.marks[subject] = [];
     }
 
@@ -103,7 +103,7 @@ class Student {
   }
 
   getAverageBySubject(subject) {
-    if (!this.marks[subject]) {
+    if (!this.marks.hasOwnProperty(subject)) {
       return 0;
     }
 
